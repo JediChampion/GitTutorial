@@ -4,12 +4,12 @@
 <body>
 <h1>this should show up</h1>
 <p>paragraph</p>
-<canvas id="mycanvas" width="800"  height="300"></canvas>
+<canvas id="mycanvas" width="800" height="300"></canvas>
 <script src="plot.js"></script>
 <script>
 var mydata = new Array(1,2,4,8,16,32,64,128,256);
 var myplot = new MakeDraw();
-myplot.is="mycanvas";
+myplot.id="mycanvas";
 myplot.plotColor = 'rgba(200,230,50,1)';
 myplot.fsize = 15;
 myplot.data = mydata;
