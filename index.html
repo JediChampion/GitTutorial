@@ -1,10 +1,17 @@
+<!DOCTYPE html>
 <html>
 <body>
-	<div>
-		<ul>
-			<li>bricks</li>
-			<li>quick</li>
-		</ul>
-	</div>
+
+<canvas id="mycanvas" width="800"  height="300"></canvas>
+<script src="plot.js"></script>
+<script>
+var mydata = new Array(1,2,4,8,16,32,64,128,256);
+var myplot = new MakeDraw();
+myplot.is="mycanvas";
+myplot.plotColor = 'rgba(200,230,50,1)';
+myplot.fsize = 15;
+myplot.data = mydata;
+myplot.plot();
+</script>
 </body>
-</html>
+</html> 
