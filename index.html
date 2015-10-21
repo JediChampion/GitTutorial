@@ -10,7 +10,10 @@
 var myData = new Array([10, 20], [15, 10], [20, 30], [25, 10], [30, 5]);
 	var myChart = new JSChart('chartcontainer', 'line');
 myChart.setDataArray(myData);
+myChart.setTitle('Predator/Prey');
 myChart.setSize(616,321);
+myChart.setAxisNameX('Predator');
+myChart.setAxisNameY('Prey');
 myChart.draw();
 </script>
 </body>
