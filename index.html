@@ -15,6 +15,11 @@ myplot.fsize = 15;
 myplot.data = mydata;
 myplot.plot();
 </script>
-
+<script type="text/javascript">
+	var myData = new Array([10, 20], [15, 10], [20, 30], [25, 10], [30, 5]);
+	var myChart = new JSChart('chartcontainer', 'line');
+	myChart.setDataArray(myData);
+	myChart.draw();
+</script>
 </body>
 </html> 
