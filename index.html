@@ -7,7 +7,7 @@
 
 <div id="chartcontainer">Click to see the results</div>
 <script type="text/javascript">
-function myFunction(){
+
 var myData = new Array([10, 20],[10,10],[12,18], [15, 10], [20, 30], [25, 10], [30, 5]);
 	var myChart = new JSChart('chartcontainer', 'line');
 myChart.setDataArray(myData);
@@ -16,8 +16,19 @@ myChart.setSize(616,321);
 myChart.setAxisNameX('Predator');
 myChart.setAxisNameY('Prey');
 myChart.draw();
-}
+
 </script>
+<script type="text/javascript">
+function myFunction(){
+var myData = new Array([10, 20],[10,22],[15,14], [15, 10], [20, 30], [25, 10], $
+        var myChart = new JSChart('chartcontainer', 'line');
+myChart.setDataArray(myData);
+myChart.setTitle('Predator/Prey');
+myChart.setSize(616,321);
+myChart.setAxisNameX('Predator');
+myChart.setAxisNameY('Prey');
+myChart.draw();
+}
 
 </body>
 </html> 
