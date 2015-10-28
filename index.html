@@ -5,20 +5,16 @@
 <h1>Predator/Prey</h1>
 
 
-<div id="chartcontainer">Click to see the results</div>
+<div id="chartcontainer">click</div>
 <script type="text/javascript">
-
-var myData = new Array([10, 20],[10,10],[12,18], [15, 10], [20, 30], [25, 10], $
-        var myChart = new JSChart('chartcontainer', 'line');
+var myData = new Array([10, 20],[10,10],[12,18], [15, 10], [20, 30], [25, 10], [30, 5]);
+	var myChart = new JSChart('chartcontainer', 'line');
 myChart.setDataArray(myData);
 myChart.setTitle('Predator/Prey');
 myChart.setSize(616,321);
 myChart.setAxisNameX('Predator');
 myChart.setAxisNameY('Prey');
 myChart.draw();
-
-
-
 </script>
 
 
