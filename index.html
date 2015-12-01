@@ -1,32 +1,134 @@
 
 <html>
+<style> 
+#main {
+    background-color: SkyBlue;
+    padding:10px;
+    float: left;
+    width: 70%;
+    margin: 0px;
+    overflow: auto;
+    height: 600px;
+    border-right-style: solid;
+    border-right-width: medium;
+}
+a:link{
+  color:green;
+}
+#sidebar {
+    width: 25%;
+    float: right;
+    height: 200px;
+}
+#header{
+    display:block;
+    text-align: center;
+    font-size: 12px;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
+}
+#titlebar{
+  text-align: center;
+}
+body{
+  background-color: #F5F5DC;
+  color: black;
+}
+</style>
 <head><script type="text/javascript" src="jscharts.js"></script> </head>
 <body>
 <h1>Predator/Prey</h1>
 
-<button onclick="myFunction ()">Click</button>
+<button onclick="myFunction ()">Run</button>
 <div id="chartcontainer">click</div>
-<script type="text/javascript">
-function myFunction() {
-var myData = new Array([10, 20],[10,10],[12,18], [15, 10], [20, 30], [25, 10], [30, 5]);
-var myData2 = new Array([10, 10], [15, 5], [25, 25], [30, 20]);
-var myData3 = new Array([10, 12], [15, 45], [25, 25], [30, 21]);
-	var myChart = new JSChart('chartcontainer', 'line');
-	
-myChart.setDataArray(myData,'line1');
+<center> X0 <input type="text" id="X0" value="1500.0"> 
+Y0 <input type="text" id="Y0" value="50.0"></center>
+<br>
+<center> Alpha <input type="text" id="Alpha" value="0.15">
+Beta <input type="text" id="Beta" value="0.001"></center>
+<br>
+<center>
+Delta  <input type="text" id="Delta" value="0.00015"> 
+Gamma  <input type="text" id="Gamma" value="0.25"> 
+</center>   
+<center>
+<button onclick="save()" type="button">Save</button>
+<button onclick="restore()" type="button">Restore</button>
+</center>
 
-myChart.setDataArray(myData3, 'line_3');
-myChart.setTitle('Predator/Prey');
-myChart.setSize(616,321);
-myChart.setAxisNameX('Predator');
-myChart.setAxisNameY('Prey');
-myChart.draw();
-var myData2 = new Array([10, 10], [15, 5], [25, 25], [30, 20]);
-myChart.setDataArray(myData2, 'line_2');
-myChart.draw();
+<script type="text/javascript">
+var x0, y0; //doubles
+var alpha, beta, delta, gamma; //more doubles
+function save() {
+localStorage.setItem("one", parseFloat(document.getElementById("X0").value));
+localStorage.setItem("two", parseFloat(document.getElementById("Y0").value));
+localStorage.setItem("three", parseFloat(document.getElementById("Alpha").value));
+localStorage.setItem("four", parseFloat(document.getElementById("Beta").value));
+localStorage.setItem("five", parseFloat(document.getElementById("Delta").value));
+localStorage.setItem("six", parseFloat(document.getElementById("Gamma").value));
 }
-</script>
+function restore(){
+document.getElementById("X0").value = localStorage.getItem("one");
+document.getElementById("Y0").value = localStorage.getItem("two");
+document.getElementById("Alpha").value = localStorage.getItem("three");
+document.getElementById("Beta").value = localStorage.getItem("four");
+document.getElementById("Delta").value = localStorage.getItem("five");
+document.getElementById("Gamma").value = localStorage.getItem("six");
+}
+function myFunction() {
+
+var t=0.0;
+var tfinal;
+var nprint;
+var h;
+var n;
+var i;
+var xt, yt, xtph, ytph;
+
+
+x0 = parseFloat(document.getElementById("X0").value);
+y0 = parseFloat(document.getElementById("Y0").value);
+alpha = parseFloat(document.getElementById("Alpha").value);
+beta = parseFloat(document.getElementById("Beta").value);
+delta = parseFloat(document.getElementById("Delta").value);
+gamma = parseFloat(document.getElementById("Gamma").value);
+
+h = .1;
+nprint = 10;
+tfinal = 50;
+
+n = tfinal / h;
+xt = x0;
+yt= y0;
+
+var Prey = new Array(n);
+var Predator = new Array(n);
+for(i = 0; i < n; i++){
+  Prey[i] = [i,xt];
+  Predator[i] = [i,yt];
+  t = i*h;
+  xtph = xt + h*(alpha*xt - beta*xt*yt);
+  ytph = yt + h*(delta*xt*yt - gamma*yt);
+  xt = xtph;
+  yt = ytph;
+}
+var myChart = new JSChart('chartcontainer', 'line');
+var myChart2 = new JSChart('chartcontainer', 'line');
+myChart.setDataArray(Prey, 'Prey');
+myChart2.setDataArray(Predator, 'Predator');
+myChart.setTitle('Prey');
+myChart.setSize(616,321);
+myChart.setAxisNameX('Time');
+myChart.setAxisNameY('Population');
+myChart.draw();
+myChart2.setTitle('Predator');
+myChart2.setSize(616,321);
+myChart2.setAxisNameX('Time');
+myChart2.setAxisNameY('Population');
+myChart2.draw();
+}
+    </script>
 
 
 </body>
-</html> 
+</html>
