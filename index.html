@@ -112,7 +112,8 @@ for(i = 0; i < n; i++){
   xt = xtph;
   yt = ytph;
 }
-var myChart = new JSChart('chartcontainer', 'line');
+
+var myChart = new JSChart('chart_container', 'line', '');
 var myChart2 = new JSChart('chartcontainer', 'line2');
 myChart.setDataArray(Prey, 'line');
 myChart.setDataArray(Predator, 'line2');
