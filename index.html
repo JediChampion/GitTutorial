@@ -113,9 +113,9 @@ for(i = 0; i < n; i++){
   yt = ytph;
 }
 var myChart = new JSChart('chartcontainer', 'line');
-var myChart2 = new JSChart('chartcontainer', 'line');
-myChart.setDataArray(Prey, 'Prey');
-myChart2.setDataArray(Predator, 'Predator');
+var myChart2 = new JSChart('chartcontainer', 'line2');
+myChart.setDataArray(Prey, 'line');
+myChart.setDataArray(Predator, 'line2');
 myChart.setTitle('Prey');
 myChart.setSize(616,321);
 myChart.setAxisNameX('Time');
@@ -125,7 +125,7 @@ myChart2.setTitle('Predator');
 myChart2.setSize(616,321);
 myChart2.setAxisNameX('Time');
 myChart2.setAxisNameY('Population');
-myChart2.draw();
+
 }
     </script>
 
